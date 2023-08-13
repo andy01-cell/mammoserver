@@ -192,4 +192,4 @@ def getfile():
 
 
 if __name__ == '__main__':
-    my_awesome_app.run()
+    my_awesome_app.app()
