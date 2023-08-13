@@ -17,10 +17,10 @@ from sklearn.metrics import confusion_matrix
 my_awesome_app = Flask(__name__)
 CORS(my_awesome_app)
 my_awesome_app.secret_key = "caircocoders-ednalan"
-UPLOAD_FOLDER = 'uploads'
+UPLOAD_FOLDER = 'static/uploads'
 my_awesome_app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 # my_awesome_app.config['MAX_CONTENT_LENGTH'] = 16 * 1024 * 1024
-UPLOAD_CLASIFER = 'clasifer'
+UPLOAD_CLASIFER = 'static/clasifer'
 my_awesome_app.config['UPLOAD_CLASIFER'] = UPLOAD_CLASIFER
 ALLOWED_EXTENSIONS = set(['dcm'])
 
@@ -90,13 +90,13 @@ def proses(filepath):
     # membuat gambar PIL dari data DICOM
     imagedcm = Image.fromarray(dicom_file.pixel_array)
     # menyimpan gambar sebagai JPG
-    imagedcm.save("clasifer/clasifier.jpg")
+    imagedcm.save("static/clasifer/clasifier.jpg")
 
     # ----klasifikasi----
     kelas = ["stadium 1", "stadium 2", "stadium 3", "stadium 4"]
     test = []
     # dirimg = final_image.save(os.path.join(my_awesome_app.config['UPLOAD_CLASIFER'], "clasifier.jpg"))
-    dirimg = os.path.join("clasifer/clasifier.jpg")
+    dirimg = os.path.join("static/clasifer/clasifier.jpg")
     print("dir = ", dirimg)
     kanker_img = cv2.imread(dirimg, 0)
     kanker_img = cv2.resize(kanker_img, (50, 50))
